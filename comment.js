@@ -1,14 +1,15 @@
 //Create Web Server
 const express = require('express');
 const app = express();
-app.use(express.static('public'));
+const port = 3000;
 
-//Create a route
+// Import comment.js
+const comment = require('./comment');
+
 app.get('/comment', (req, res) => {
-    res.send('Hello, World!');
+    res.send(comment.getComment());
 });
 
-//Start the server
-app.listen(3000, () => {
-    console.log('Server is running on http://localhost:3000');
+app.listen(port, () => {
+    console.log(`Server is running on http://localhost:${port}`);
 });
